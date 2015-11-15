@@ -24,11 +24,22 @@ public class CarController : MonoBehaviour {
 
     public Text speedometer;
     public Text playerHealth;
+    public Text gameTime;
+    public Text lapText;
+
+    //This is our lap counter
+    public Collider LapCollider;
+    int lapCounter = 0;
 
     public float health = 100;
 
     //The amount of damage each pedestrian will inflict on the player
     public int dmgAmount = 1;
+
+    float minutes;
+    float seconds;
+
+    
 
     // Use this for initialization
     void Start () {
@@ -70,12 +81,28 @@ public class CarController : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
+        minutes = (int)(Time.time / 60f);
+        seconds = (int)(Time.time % 60f);
+        gameTime.text = "Time " + minutes.ToString("00") + ":" + seconds.ToString("00");
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         health -= dmgAmount;
         playerHealth.text = "Health " + (health);
+
+        if (other == LapCollider) {
+
+
+            lapCounter += 1;
+            lapText.text = "Lap " + (lapCounter) + "/3";
+
+            //reset the player health
+            health = 100;
+            playerHealth.text = "Health " + (health);
+        }
+
     }
 
 }
