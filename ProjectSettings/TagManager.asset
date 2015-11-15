@@ -6,6 +6,7 @@ TagManager:
   tags:
   - WaypointCar1
   - WaypointPed1
+  - WaypointCar2
   layers:
   - Default
   - TransparentFX

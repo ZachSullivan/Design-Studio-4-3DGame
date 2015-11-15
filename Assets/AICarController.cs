@@ -24,61 +24,56 @@ public class AICarController : MonoBehaviour {
 
     public List<GameObject> waypoints;
     public int currentWaypoint;
+
+    //Check which path the user wants the AI to follow
+    public bool aiCar1 = true;
+
     // Use this for initialization
     void Start () {
 
         GetComponent<Rigidbody>().centerOfMass = new Vector3 (0,-0.9f,0);
 
-        waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointCar1"));
+        if (aiCar1){
+            waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointCar1"));
+        }
+        else {
+            waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointCar2"));
+        }
+        
         waypoints.Reverse();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        Vector3 RelWaypointPos = transform.InverseTransformPoint(new Vector3(
-            waypoints[currentWaypoint].transform.position.x,
-            transform.position.y,
-            waypoints[currentWaypoint].transform.position.z));
+        Vector3 steerVector = transform.InverseTransformPoint(new Vector3(waypoints[currentWaypoint].transform.position.x, transform.position.y, waypoints[currentWaypoint].transform.position.z));
+        float newSteer = 100 * (steerVector.x / steerVector.magnitude);
+        wheelFL.steerAngle = newSteer;
+        wheelFR.steerAngle = newSteer;
 
-        float aiSteer = RelWaypointPos.x / RelWaypointPos.magnitude;
-        float aiTorque = RelWaypointPos.z / RelWaypointPos.magnitude - Mathf.Abs(aiSteer);
-
-        print(aiTorque);
-
-        if (RelWaypointPos.magnitude < 5)
+        if (steerVector.magnitude <= 5)
         {
             currentWaypoint++;
-
             if (currentWaypoint >= waypoints.Count)
-            {
                 currentWaypoint = 0;
-            }
         }
 
-        wheelRR.motorTorque = maxTorgue * aiTorque;
-        wheelRL.motorTorque = maxTorgue * aiTorque;
-
-        wheelFL.steerAngle = 10 * aiSteer;
-        wheelFR.steerAngle = 10 * aiSteer;
-
-        /*wheelRR.motorTorque = maxTorgue * Input.GetAxis("Vertical");
-        wheelRL.motorTorque = maxTorgue * Input.GetAxis("Vertical");
-
-        speedometer.text = "Speed " + (GetComponent<Rigidbody>().velocity.magnitude * 3.6f).ToString("F0") + " km/h";
-
-        
-
-        if (!Input.GetButton("Vertical"))
+        float currentSpeed = 2 * (22 / 7) * wheelRL.radius * wheelRL.rpm * 60 / 1000;
+        currentSpeed = Mathf.Round(currentSpeed);
+        if (currentSpeed <= 40)
         {
-            wheelRR.brakeTorque = deAccelerationSpeed;
-            wheelRL.brakeTorque = deAccelerationSpeed;
-        }
-        else {
-            wheelRR.brakeTorque = 0;
+            wheelRL.motorTorque = 500;
+            wheelRR.motorTorque = 500;
             wheelRL.brakeTorque = 0;
-        }*/
-
+            wheelRR.brakeTorque = 0;
+        }
+        else
+        {
+            wheelRL.motorTorque = 0;
+            wheelRR.motorTorque = 0;
+            wheelRL.brakeTorque = 100;
+            wheelRR.brakeTorque = 100;
+        }
     }
 
     void Update() {
@@ -87,24 +82,4 @@ public class AICarController : MonoBehaviour {
         wheelRLTrans.Rotate(wheelRL.rpm * 6.0f * Time.deltaTime, 0, 0);
         wheelRRTrans.Rotate(wheelRR.rpm * 6.0f * Time.deltaTime, 0, 0);
     }
-
-    void GetWaypoints()
-    {
-        // Now, this function basically takes the container object for the waypoints, then finds all of the transforms in it,
-        // once it has the transforms, it checks to make sure it's not the container, and adds them to the array of waypoints.
-        
-        //var potentialWaypoints : Array = waypointContainer.GetComponentsInChildren(Transform);
-       /* Array waypointArr = waypointContainer.GetComponentsInChildren(Transform);
-        waypoints = new Array();
-
-        for (var potentialWaypoint : Transform in potentialWaypoints)
-        {
-            if (potentialWaypoint != waypointContainer.transform)
-            {
-                waypoints[waypoints.length] = potentialWaypoint;
-            }
-        }*/
-    }
-
-
 }
