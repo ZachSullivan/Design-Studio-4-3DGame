@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WaypointCar1
+  - WaypointPed1
   layers:
   - Default
   - TransparentFX

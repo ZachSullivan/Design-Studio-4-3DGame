@@ -23,9 +23,15 @@ public class CarController : MonoBehaviour {
     public Rigidbody carBody;
 
     public Text speedometer;
+    public Text playerHealth;
 
-	// Use this for initialization
-	void Start () {
+    public float health = 100;
+
+    //The amount of damage each pedestrian will inflict on the player
+    public int dmgAmount = 1;
+
+    // Use this for initialization
+    void Start () {
 
         GetComponent<Rigidbody>().centerOfMass = new Vector3 (0,-0.9f,0);
 
@@ -59,6 +65,17 @@ public class CarController : MonoBehaviour {
         wheelFRTrans.Rotate(wheelFR.rpm * 6.0f * Time.deltaTime, 0, 0);
         wheelRLTrans.Rotate(wheelRL.rpm * 6.0f * Time.deltaTime, 0, 0);
         wheelRRTrans.Rotate(wheelRR.rpm * 6.0f * Time.deltaTime, 0, 0);
+
+        if (health <= 0) {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        health -= dmgAmount;
+        playerHealth.text = "Health " + (health);
     }
 
 }
