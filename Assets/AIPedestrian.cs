@@ -14,11 +14,18 @@ public class AIPedestrian : MonoBehaviour {
 
     float distance;
 
-    
+    //Check which path the user wants the AI to follow
+    public bool usePath1 = true;
 
     float speed = 0.3f;
     void Start () {
-        waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointPed1"));
+
+        if (usePath1){
+            waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointPed1"));
+        }
+        else {
+            waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointPed2"));
+        }
         waypoints.Reverse();
 
         start = new Vector3(waypoints[0].transform.position.x, waypoints[0].transform.position.y, waypoints[0].transform.position.z);
