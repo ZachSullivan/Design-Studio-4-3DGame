@@ -39,7 +39,10 @@ public class CarController : MonoBehaviour {
     float minutes;
     float seconds;
 
-    
+    public GameObject Checkpoint1;
+    public GameObject Checkpoint2;
+    public GameObject Checkpoint3;
+    Transform currentCheckpoint;
 
     // Use this for initialization
     void Start () {
@@ -77,14 +80,20 @@ public class CarController : MonoBehaviour {
         wheelRLTrans.Rotate(wheelRL.rpm * 6.0f * Time.deltaTime, 0, 0);
         wheelRRTrans.Rotate(wheelRR.rpm * 6.0f * Time.deltaTime, 0, 0);
 
+        //When player health reaches 0, restart the game
         if (health <= 0) {
-            Destroy(this.gameObject);
+            Application.LoadLevel(Application.loadedLevelName);
         }
 
         minutes = (int)(Time.time / 60f);
         seconds = (int)(Time.time % 60f);
         gameTime.text = "Time " + minutes.ToString("00") + ":" + seconds.ToString("00");
 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            this.transform.position = currentCheckpoint.transform.position;
+            this.transform.rotation = currentCheckpoint.transform.rotation;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -92,17 +101,38 @@ public class CarController : MonoBehaviour {
         health -= dmgAmount;
         playerHealth.text = "Health " + (health);
 
-        if (other == LapCollider) {
+        //Check if the player reached the lap collider
+        if (other == LapCollider)
+        {
 
 
             lapCounter += 1;
             lapText.text = "Lap " + (lapCounter) + "/3";
+
+            if (lapCounter >= 3)
+            {
+                Application.LoadLevel(Application.loadedLevelName);
+            }
 
             //reset the player health
             health = 100;
             playerHealth.text = "Health " + (health);
         }
 
-    }
+        //Check if player has reached any of the checkpoints
+        if (other == Checkpoint1.GetComponent<Collider>())
+        {
+            currentCheckpoint = Checkpoint1.transform;
+        }
 
+        if (other == Checkpoint2.GetComponent<Collider>())
+        {
+            currentCheckpoint = Checkpoint2.transform;
+        }
+
+        if (other == Checkpoint3.GetComponent<Collider>())
+        {
+            currentCheckpoint = Checkpoint3.transform;
+        }
+    }
 }
