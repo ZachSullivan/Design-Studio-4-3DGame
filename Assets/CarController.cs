@@ -44,9 +44,11 @@ public class CarController : MonoBehaviour {
     public GameObject Checkpoint3;
     Transform currentCheckpoint;
 
+
     // Use this for initialization
     void Start () {
 
+        //Reset the center of mass to avoid flipping
         GetComponent<Rigidbody>().centerOfMass = new Vector3 (0,-0.9f,0);
 
 	}
@@ -98,9 +100,13 @@ public class CarController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        health -= dmgAmount;
-        playerHealth.text = "Health " + (health);
-
+        if (other != Checkpoint1.GetComponent<Collider>() 
+            || other != Checkpoint2.GetComponent<Collider>()
+            || other != Checkpoint3.GetComponent<Collider>()) {
+        
+            health -= dmgAmount;
+            playerHealth.text = "Health " + (health);
+        }
         //Check if the player reached the lap collider
         if (other == LapCollider)
         {
