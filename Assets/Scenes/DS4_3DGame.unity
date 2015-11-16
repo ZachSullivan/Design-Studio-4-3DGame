@@ -741,10 +741,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2133943912}
   m_RootOrder: 4
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 240, y: -261}
-  m_SizeDelta: {x: -620, y: -608}
+  m_AnchorMin: {x: .407492548, y: .0690000057}
+  m_AnchorMax: {x: .615776122, y: .119301423}
+  m_AnchoredPosition: {x: 202, y: -2.5}
+  m_SizeDelta: {x: 441, y: -3}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &26840822
 MonoBehaviour:
@@ -7956,7 +7956,64 @@ MonoBehaviour:
   maxTorgue: 1000
   speed: 10
   rotSpeed: 100
-  waypoints: []
+  waypoints:
+  - {fileID: 1979492792}
+  - {fileID: 587023028}
+  - {fileID: 1759272040}
+  - {fileID: 1305904807}
+  - {fileID: 290126768}
+  - {fileID: 1765215976}
+  - {fileID: 690110519}
+  - {fileID: 582261461}
+  - {fileID: 1253483717}
+  - {fileID: 840215927}
+  - {fileID: 638759740}
+  - {fileID: 1081527247}
+  - {fileID: 1314279610}
+  - {fileID: 1156460976}
+  - {fileID: 383258503}
+  - {fileID: 1039130400}
+  - {fileID: 1250903804}
+  - {fileID: 579205073}
+  - {fileID: 1426969763}
+  - {fileID: 1905809636}
+  - {fileID: 1963406687}
+  - {fileID: 148294039}
+  - {fileID: 1623466011}
+  - {fileID: 1223155847}
+  - {fileID: 160194810}
+  - {fileID: 863396273}
+  - {fileID: 302425262}
+  - {fileID: 542608261}
+  - {fileID: 1623495469}
+  - {fileID: 1965078634}
+  - {fileID: 1175492326}
+  - {fileID: 982103295}
+  - {fileID: 1911053271}
+  - {fileID: 216735938}
+  - {fileID: 926938880}
+  - {fileID: 2129976536}
+  - {fileID: 1354237753}
+  - {fileID: 272138473}
+  - {fileID: 816471265}
+  - {fileID: 406211608}
+  - {fileID: 622777728}
+  - {fileID: 346507968}
+  - {fileID: 1695714737}
+  - {fileID: 1020952913}
+  - {fileID: 322403530}
+  - {fileID: 1947193221}
+  - {fileID: 1496544253}
+  - {fileID: 426652292}
+  - {fileID: 1533319452}
+  - {fileID: 75923589}
+  - {fileID: 919472659}
+  - {fileID: 715072551}
+  - {fileID: 952199703}
+  - {fileID: 1447186760}
+  - {fileID: 1355555417}
+  - {fileID: 960709803}
+  - {fileID: 48989824}
   currentWaypoint: 0
   aiCar1: 0
 --- !u!65 &412480842
@@ -15936,7 +15993,7 @@ Transform:
   m_LocalScale: {x: 1, y: 5.31361389, z: 10.6953058}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!1 &887700621
 GameObject:
   m_ObjectHideFlags: 0
@@ -23426,7 +23483,96 @@ MonoBehaviour:
   maxTorgue: 1000
   speed: 15
   rotSpeed: 100
-  waypoints: []
+  waypoints:
+  - {fileID: 39503207}
+  - {fileID: 110036319}
+  - {fileID: 876025213}
+  - {fileID: 251288026}
+  - {fileID: 772383578}
+  - {fileID: 1306588544}
+  - {fileID: 350765915}
+  - {fileID: 1298331615}
+  - {fileID: 1694921386}
+  - {fileID: 1047235957}
+  - {fileID: 866258206}
+  - {fileID: 1377565685}
+  - {fileID: 1846270352}
+  - {fileID: 796972927}
+  - {fileID: 374222883}
+  - {fileID: 339233076}
+  - {fileID: 205585907}
+  - {fileID: 2039288910}
+  - {fileID: 1946191642}
+  - {fileID: 410560994}
+  - {fileID: 894187217}
+  - {fileID: 279065198}
+  - {fileID: 856430825}
+  - {fileID: 1703266389}
+  - {fileID: 1152652775}
+  - {fileID: 429251928}
+  - {fileID: 2115946245}
+  - {fileID: 1226587082}
+  - {fileID: 689956808}
+  - {fileID: 938929127}
+  - {fileID: 748453339}
+  - {fileID: 1244357467}
+  - {fileID: 1453989786}
+  - {fileID: 1479981505}
+  - {fileID: 550420276}
+  - {fileID: 797875658}
+  - {fileID: 1170752976}
+  - {fileID: 468100905}
+  - {fileID: 353758614}
+  - {fileID: 164033520}
+  - {fileID: 423801112}
+  - {fileID: 573230195}
+  - {fileID: 1817436137}
+  - {fileID: 834226053}
+  - {fileID: 276709258}
+  - {fileID: 308478131}
+  - {fileID: 2015450105}
+  - {fileID: 685798087}
+  - {fileID: 1508283397}
+  - {fileID: 1829217286}
+  - {fileID: 1635145363}
+  - {fileID: 673226020}
+  - {fileID: 2022983950}
+  - {fileID: 914413820}
+  - {fileID: 1514818516}
+  - {fileID: 580152635}
+  - {fileID: 1957642988}
+  - {fileID: 1727062156}
+  - {fileID: 1136933298}
+  - {fileID: 1327804959}
+  - {fileID: 1136725182}
+  - {fileID: 257846509}
+  - {fileID: 1725829455}
+  - {fileID: 794560450}
+  - {fileID: 2049983380}
+  - {fileID: 357415848}
+  - {fileID: 192623976}
+  - {fileID: 845064253}
+  - {fileID: 597355149}
+  - {fileID: 1264111349}
+  - {fileID: 666355648}
+  - {fileID: 2008947182}
+  - {fileID: 1048353517}
+  - {fileID: 1689910077}
+  - {fileID: 1650183446}
+  - {fileID: 1797524112}
+  - {fileID: 1389211721}
+  - {fileID: 1356626016}
+  - {fileID: 524896409}
+  - {fileID: 1534237360}
+  - {fileID: 1553651986}
+  - {fileID: 1676391025}
+  - {fileID: 571492672}
+  - {fileID: 2085428852}
+  - {fileID: 1151350739}
+  - {fileID: 908702744}
+  - {fileID: 728395983}
+  - {fileID: 945635114}
+  - {fileID: 1742577829}
   currentWaypoint: 0
   aiCar1: 1
 --- !u!136 &1325016557
@@ -36489,7 +36635,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lap 0/3
+  m_Text: Lap 0/2
 --- !u!222 &2075728398
 CanvasRenderer:
   m_ObjectHideFlags: 0

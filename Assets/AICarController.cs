@@ -33,14 +33,15 @@ public class AICarController : MonoBehaviour {
 
         GetComponent<Rigidbody>().centerOfMass = new Vector3 (0,-0.9f,0);
 
-        if (aiCar1){
+        /*if (aiCar1){
             waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointCar1"));
         }
         else {
             waypoints = new List<GameObject>(GameObject.FindGameObjectsWithTag("WaypointCar2"));
-        }
-        
-        waypoints.Reverse();
+        }*/
+        //waypoints = new List<GameObject>();
+
+        //waypoints.Reverse();
 	}
 	
 	// Update is called once per frame

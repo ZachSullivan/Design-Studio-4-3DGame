@@ -113,7 +113,7 @@ public class CarController : MonoBehaviour {
 
 
             lapCounter += 1;
-            lapText.text = "Lap " + (lapCounter) + "/3";
+            lapText.text = "Lap " + (lapCounter) + "/2";
 
             if (lapCounter >= 3)
             {
